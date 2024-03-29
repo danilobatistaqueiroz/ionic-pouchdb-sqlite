@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Employee Details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="removeEmployee()">
+          <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-label>First Name</ion-label>
+            <ion-input text-right type="text" [(ngModel)]="employee.firstName"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Last Name</ion-label>
+            <ion-input text-right type="text" [(ngModel)]="employee.lastName"></ion-input>
+        </ion-item>        
+    </ion-list>
+    <button ion-button block (click)="addOrUpdate()">Add/Update Employee</button>
+</ion-content>

@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-title>The Employees Database</ion-title>
+  <ion-buttons end>
+    <ion-button (click)="addEmployee()">
+        <ion-icon name="add"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="first name" [(ngModel)]="firstName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="last name" [(ngModel)]="lastName"></ion-input>
+    </ion-item>
+  </ion-list>
+
+    <ion-list>
+        <ion-item *ngFor="let emp of employees" (click)="showDetails(emp)">
+          <div>{{ emp.firstName }} {{emp.lastName}}</div>
+        </ion-item>
+      </ion-list>
+
+</ion-content>
