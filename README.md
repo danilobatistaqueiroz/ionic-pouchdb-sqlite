@@ -57,7 +57,34 @@ http://localhost:5984/_utils/
 docker exec -it YOUR_CONTAINER_NAME bash  
 
 
-
+**configurando cors:**  
 pnpm install -g add-cors-to-couchdb
 add-cors-to-couchdb http://localhost:5984 -u admin -p 123456
 
+**ssl:**  
+[ssl]
+enable = true
+cert_file = /etc/couchdb/cert/couchdb.pem
+key_file = /etc/couchdb/cert/privkey.pem
+
+**_users database:**  
+criar o database _users
+
+**usando openssl:**  
+shell> mkdir /etc/couchdb/cert
+shell> cd /etc/couchdb/cert
+shell> openssl genrsa > privkey.pem
+shell> openssl req -new -x509 -key privkey.pem -out couchdb.pem -days 1095
+
+entrar no container:  
+docker exec -it YOUR_CONTAINER bash  
+
+shell> chmod 600 privkey.pem couchdb.pem
+shell> chown couchdb privkey.pem couchdb.pem
+
+**para alterar o arquivo local.ini:**  
+sudo chmod +w ./etc/local.ini; sudo chmod g+w ./etc/local.ini; sudo chown element ./etc/local.ini
+
+
+**connectando do Android no CouchDB server:**  
+É necessário um certificado de alguma entidade emissora, não funciona self-cert  

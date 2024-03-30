@@ -73,3 +73,5 @@ www
 node_modules
 .history
 .angular
+
+couch

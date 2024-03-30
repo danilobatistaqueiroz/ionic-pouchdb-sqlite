@@ -52,7 +52,7 @@ export class EmployeeService {
   }
 
   createPouchDB() {
-    this.rdb = new PouchDB('http://localhost:5984/employees',
+    this.rdb = new PouchDB('https://localhost:6984/employees',
     {
       auth: {
         username: "admin",

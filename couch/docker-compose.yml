@@ -5,8 +5,12 @@ services:
     restart: always
     ports:
       - "5984:5984"
+      - "6984:6984"
     environment:
       - COUCHDB_USER=admin
       - COUCHDB_PASSWORD=123456
     volumes:
-        - ./dbdata:/opt/couchdb/data
+      - ./dbdata:/opt/couchdb/data
+      - ./etc/local.ini:/opt/couchdb/etc/local.ini
+      - ./etc/couchdb/cert/couchdb.pem:/etc/couchdb/cert/couchdb.pem
+      - ./etc/couchdb/cert/privkey.pem:/etc/couchdb/cert/privkey.pem
