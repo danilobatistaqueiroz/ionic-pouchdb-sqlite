@@ -4,12 +4,14 @@ import { Observable, Observer, Subscription, filter, share } from 'rxjs';
 
 const PouchDB = require('pouchdb').default;
 import { Employee } from './employee.model';
+import { isMobile } from './system';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
   public pdb!:any;
+  public rdb!:any;
   public employees:Employee[]=[];
 
   observable: Observable<any>;
@@ -49,25 +51,18 @@ export class EmployeeService {
     this.create(employee);
   }
 
-  isMobile():boolean{
-    if(this.platform.platforms().includes('android') || 
-       this.platform.platforms().includes('capacitor') || 
-       this.platform.platforms().includes('cordova') || 
-       this.platform.platforms().includes('mobile') || 
-       this.platform.platforms().includes('mobileweb')){
-        return true;
-    } else {
-      return false;
-    }
-  }
-
   createPouchDB() {
-    if(this.isMobile()){
+    this.rdb = new PouchDB('http://localhost:5984/employees',
+    {
+      auth: {
+        username: "admin",
+        password: "123456",
+      },
+    });
+    let options = {adapter:'cordova-sqlite',location:'default',androidDatabaseImplementation:2};
+    if(isMobile(this.platform)){
       PouchDB.plugin(require('pouchdb-adapter-cordova-sqlite'));
-      this.pdb = new PouchDB('employees.db',  { adapter: 'cordova-sqlite', 
-        location: 'default',
-        androidDatabaseImplementation: 2
-      });
+      this.pdb = new PouchDB('employees.db', options);
     } else {
       this.pdb = new PouchDB('employees.db');
     }
@@ -85,7 +80,7 @@ export class EmployeeService {
     return this.pdb.remove(employee);
   }
 
-  async allDocs() {
+  async localDocs() {
     let docs = await this.pdb.allDocs({ include_docs: true})
     this.employees = docs.rows.map((row:any) => {
       row.doc.Date = new Date(row.doc.Date);
@@ -94,11 +89,50 @@ export class EmployeeService {
     return this.employees;
   }
 
+  async remoteDocs() {
+    let docs = await this.rdb.allDocs({ include_docs: true});
+    this.employees = docs.rows.map((row:any) => {
+      row.doc.Date = new Date(row.doc.Date);
+      return row.doc;
+    });
+    return this.employees;
+  }
+
+  async allDocs(connected:string){
+    if(connected!="off"){
+      return this.localDocs();
+    } else {
+      return this.remoteDocs();
+    }
+  }
+
   async changes(){
     this.pdb.changes({ live: true, since: 'now', include_docs: true}).on('change', async ()=>{
-      this.employees = await this.allDocs();
+      this.employees = await this.localDocs();
       this.broadcast({name:"updated",employees:this.employees});
     });
   }
+
+  async setAutoSync(){
+    this.pdb.sync(this.rdb, {
+      live: true,
+      retry: true
+    }).on('change', function (change:any) {
+      console.log(change);
+    }).on('error', function (err:any) {
+      console.error(err);
+    });
+  }
+
+  async sync(){
+    this.pdb.sync(this.rdb, {
+      live: false
+    }).on('change', function (change:any) {
+      console.log(change);
+    }).on('error', function (err:any) {
+      console.error(err);
+    });
+  }
+
 
 }

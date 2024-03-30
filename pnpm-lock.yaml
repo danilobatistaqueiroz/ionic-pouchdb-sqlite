@@ -44,6 +44,9 @@ dependencies:
   '@capacitor/keyboard':
     specifier: 5.0.8
     version: 5.0.8(@capacitor/core@5.7.4)
+  '@capacitor/network':
+    specifier: ^5.0.7
+    version: 5.0.7(@capacitor/core@5.7.4)
   '@capacitor/status-bar':
     specifier: 5.0.7
     version: 5.0.7(@capacitor/core@5.7.4)
@@ -53,9 +56,6 @@ dependencies:
   '@types/node':
     specifier: ^20.11.30
     version: 20.11.30
-  cordova-plugin-sqlite-2:
-    specifier: ^1.0.7
-    version: 1.0.7
   cordova-sqlite-storage:
     specifier: ^6.1.0
     version: 6.1.0
@@ -68,12 +68,6 @@ dependencies:
   pouchdb-adapter-cordova-sqlite:
     specifier: ^2.0.8
     version: 2.0.8
-  pouchdb-adapter-indexeddb:
-    specifier: ^8.0.1
-    version: 8.0.1
-  pouchdb-browser:
-    specifier: ^8.0.1
-    version: 8.0.1
   rxjs:
     specifier: ~7.8.0
     version: 7.8.1
@@ -124,9 +118,6 @@ devDependencies:
   '@types/pouchdb':
     specifier: ^6.4.2
     version: 6.4.2
-  '@types/pouchdb-browser':
-    specifier: ^6.1.5
-    version: 6.1.5
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.0.0
     version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@7.32.0)(typescript@5.2.2)
@@ -2009,6 +2000,14 @@ packages:
 
   /@capacitor/keyboard@5.0.8(@capacitor/core@5.7.4):
     resolution: {integrity: sha512-XYyBzGlzjgLPqyPVdu5McGLYV6+G2efVR4I3l5cF1B27M6U/oFqv9CQU74WNG08nee28bfccboNpv6eWCLYn1A==}
+    peerDependencies:
+      '@capacitor/core': ^5.0.0
+    dependencies:
+      '@capacitor/core': 5.7.4
+    dev: false
+
+  /@capacitor/network@5.0.7(@capacitor/core@5.7.4):
+    resolution: {integrity: sha512-g+8SkNmkOyidaHnfKI9Ly8GNcx3VEwboehDXcTs5WU8bPuhCOEzbZnC0kFL5wwix3AoUQl8gEos6MtCey5cUIg==}
     peerDependencies:
       '@capacitor/core': ^5.0.0
     dependencies:
@@ -4721,10 +4720,6 @@ packages:
       serialize-javascript: 6.0.2
       webpack: 5.90.3(esbuild@0.20.1)
     dev: true
-
-  /cordova-plugin-sqlite-2@1.0.7:
-    resolution: {integrity: sha512-SL+RBAl5k5xWduIl1SIicat4MA39+wfUlbYguBfvZNTJ3dgeVn9gMDLo5OFub2aO7IaNNI1H4i9rV28LhBzfBw==}
-    dev: false
 
   /cordova-sqlite-storage-dependencies@4.1.0:
     resolution: {integrity: sha512-D0ZXfNkS3z9GO+Ha2rC2odvOOMcx/moL8lpVDFxXqcsCEZbJimuki4wZfdrQrGlNd/d7r4DNodljRmO20v6Ntg==}
@@ -8352,17 +8347,6 @@ packages:
       pouchdb-adapter-websql-core: 7.0.0
     dev: false
 
-  /pouchdb-adapter-indexeddb@8.0.1:
-    resolution: {integrity: sha512-pX4FdL2isG4uhYXXnBUQJnkwcu+mBUjN/TW+B6aQhU+b/ZpLzH1XU/aui3/X604vhyOwy+DE4MsZEIsohUkR4g==}
-    dependencies:
-      pouchdb-adapter-utils: 8.0.1
-      pouchdb-binary-utils: 8.0.1
-      pouchdb-errors: 8.0.1
-      pouchdb-md5: 8.0.1
-      pouchdb-merge: 8.0.1
-      pouchdb-utils: 8.0.1
-    dev: false
-
   /pouchdb-adapter-utils@7.0.0:
     resolution: {integrity: sha512-UWKPC6jkz6mHUzZefrU7P5X8ZGvBC8LSNZ7BIp0hWvJE6c20cnpDwedTVDpZORcCbVJpDmFOHBYnOqEIblPtbA==}
     dependencies:
@@ -8372,17 +8356,6 @@ packages:
       pouchdb-md5: 7.0.0
       pouchdb-merge: 7.0.0
       pouchdb-utils: 7.0.0
-    dev: false
-
-  /pouchdb-adapter-utils@8.0.1:
-    resolution: {integrity: sha512-2nTeYaImu958BU4e46SSdv0IdkXYS/PSy5CXyfb7jK9g0aBAp/JRi7qh9nsTjk4FewpT6OpaE/7evxMQa7UuMg==}
-    dependencies:
-      pouchdb-binary-utils: 8.0.1
-      pouchdb-collections: 8.0.1
-      pouchdb-errors: 8.0.1
-      pouchdb-md5: 8.0.1
-      pouchdb-merge: 8.0.1
-      pouchdb-utils: 8.0.1
     dev: false
 
   /pouchdb-adapter-websql-core@7.0.0:
@@ -8403,37 +8376,14 @@ packages:
       buffer-from: 1.1.0
     dev: false
 
-  /pouchdb-binary-utils@8.0.1:
-    resolution: {integrity: sha512-WsuR/S0aoUlcA0Alt99czkXsfuXWcrYXAcvGiTW02zawVXOafCnb/qHjA09TUaV0oy5HeHmYaNnDckoOUqspeA==}
-    dependencies:
-      buffer-from: 1.1.2
-    dev: false
-
-  /pouchdb-browser@8.0.1:
-    resolution: {integrity: sha512-wXObS1Layd/gBRKwa6EBS99tFY9G3VPaMRu8ffWCohkpi9PZCm3z1xeB4P4S9Qecf0u5so+rxvbVVyTtgdhvaQ==}
-    dependencies:
-      immediate: 3.3.0
-      spark-md5: 3.0.2
-      uuid: 8.3.2
-      vuvuzela: 1.0.3
-    dev: false
-
   /pouchdb-collections@7.0.0:
     resolution: {integrity: sha512-DaoUr/vU24Q3gM6ghj0va9j/oBanPwkbhkvnqSyC3Dm5dgf5pculNxueLF9PKMo3ycApoWzHMh6N2N8KJbDU2Q==}
-    dev: false
-
-  /pouchdb-collections@8.0.1:
-    resolution: {integrity: sha512-TlkQ2GGHJApJgL0b7bJMQcwX6eMfVenLeoK9mqHfC2fJssui+HWJJ5LYKHOWan11SeB90BQVFbO6rHN6CJQeDg==}
     dev: false
 
   /pouchdb-errors@7.0.0:
     resolution: {integrity: sha512-dTusY8nnTw4HIztCrNl7AoGgwvS1bVf/3/97hDaGc4ytn72V9/4dK8kTqlimi3UpaurohYRnqac0SGXYP8vgXA==}
     dependencies:
       inherits: 2.0.3
-    dev: false
-
-  /pouchdb-errors@8.0.1:
-    resolution: {integrity: sha512-H+ZsQxcG/JV3Tn29gnM6c9+lRPCN91ZYOkoIICsLjVRYgOTzN1AvNUD/G5JCB+81aI/u3fxZec0LEaZh6g6NHA==}
     dev: false
 
   /pouchdb-json@7.0.0:
@@ -8449,21 +8399,8 @@ packages:
       spark-md5: 3.0.0
     dev: false
 
-  /pouchdb-md5@8.0.1:
-    resolution: {integrity: sha512-shVcs/K/iilrcAhDEERpLIrGm/cnDVsXiocOzs7kycJEuBqYnLD9nj58VwWDcum26wfa8T9cznvEGE1jlYVNPQ==}
-    dependencies:
-      pouchdb-binary-utils: 8.0.1
-      spark-md5: 3.0.2
-    dev: false
-
   /pouchdb-merge@7.0.0:
     resolution: {integrity: sha512-tci5u6NpznQhGcPv4ho1h0miky9rs+ds/T9zQ9meQeDZbUojXNaX1Jxsb0uYEQQ+HMqdcQs3Akdl0/u0mgwPGg==}
-    dev: false
-
-  /pouchdb-merge@8.0.1:
-    resolution: {integrity: sha512-79dw6+K7js2+/kt9u4hKOkGCnz+ov0+yft2k21n6M+ylFEQyMKuWHEZRoFWr72o1vxwjhIXhUM1PB2PIdxIh0Q==}
-    dependencies:
-      pouchdb-utils: 8.0.1
     dev: false
 
   /pouchdb-utils@7.0.0:
@@ -8477,17 +8414,6 @@ packages:
       pouchdb-errors: 7.0.0
       pouchdb-md5: 7.0.0
       uuid: 3.2.1
-    dev: false
-
-  /pouchdb-utils@8.0.1:
-    resolution: {integrity: sha512-pWgxdk9EHVWJmjQoEvTe+ZlPXyjcuQ/vgLITN+RjGwcYhoQYUE1M0PksQd2dUP3V8lGS4+wrg9lEM/qSJPYcpw==}
-    dependencies:
-      clone-buffer: 1.0.0
-      immediate: 3.3.0
-      pouchdb-collections: 8.0.1
-      pouchdb-errors: 8.0.1
-      pouchdb-md5: 8.0.1
-      uuid: 8.3.2
     dev: false
 
   /pouchdb@8.0.1:
