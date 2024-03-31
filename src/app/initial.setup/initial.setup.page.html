@@ -1,0 +1,12 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>initial.setup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button (click)="crypto()" [disabled]="!secret">
+    <ion-icon name="key-outline"></ion-icon>
+  </ion-button>
+  <ion-input placeholder="secret" [(ngModel)]="secret"></ion-input>
+</ion-content>

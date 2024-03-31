@@ -47,6 +47,9 @@ dependencies:
   '@capacitor/network':
     specifier: ^5.0.7
     version: 5.0.7(@capacitor/core@5.7.4)
+  '@capacitor/preferences':
+    specifier: ^5.0.7
+    version: 5.0.7(@capacitor/core@5.7.4)
   '@capacitor/status-bar':
     specifier: 5.0.7
     version: 5.0.7(@capacitor/core@5.7.4)
@@ -2008,6 +2011,14 @@ packages:
 
   /@capacitor/network@5.0.7(@capacitor/core@5.7.4):
     resolution: {integrity: sha512-g+8SkNmkOyidaHnfKI9Ly8GNcx3VEwboehDXcTs5WU8bPuhCOEzbZnC0kFL5wwix3AoUQl8gEos6MtCey5cUIg==}
+    peerDependencies:
+      '@capacitor/core': ^5.0.0
+    dependencies:
+      '@capacitor/core': 5.7.4
+    dev: false
+
+  /@capacitor/preferences@5.0.7(@capacitor/core@5.7.4):
+    resolution: {integrity: sha512-JvfGP1m8nITWEFdBpKR9HXNeBjLKwO0q1pry7Z5lYrYmCrbyRBLWzaGZGll8py4KmGWL3F5+PZvhrpT4gPoeAQ==}
     peerDependencies:
       '@capacitor/core': ^5.0.0
     dependencies:

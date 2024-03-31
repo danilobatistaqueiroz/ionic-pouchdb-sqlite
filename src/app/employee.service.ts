@@ -1,7 +1,6 @@
 import { Platform } from '@ionic/angular';
 import { Injectable } from '@angular/core';
 import { Observable, Observer, Subscription, filter, share } from 'rxjs';
-
 const PouchDB = require('pouchdb').default;
 import { Employee } from './employee.model';
 import { isMobile } from './system';
@@ -51,7 +50,7 @@ export class EmployeeService {
     this.create(employee);
   }
 
-  createPouchDB() {
+  async createPouchDB() {
     this.rdb = new PouchDB('https://localhost:6984/employees',
     {
       auth: {

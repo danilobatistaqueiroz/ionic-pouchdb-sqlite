@@ -2,7 +2,7 @@
   <ion-title>The Employees Database</ion-title>
   <ion-buttons end>
     <ion-button (click)="addEmployee()">
-        <ion-icon name="add"></ion-icon>
+      <ion-icon name="add"></ion-icon>
     </ion-button>
   </ion-buttons>
 </ion-header>
@@ -18,10 +18,10 @@
     </ion-item>
   </ion-list>
 
-    <ion-list>
-        <ion-item *ngFor="let emp of employees" (click)="showDetails(emp)">
-          <div>{{ emp.firstName }} {{emp.lastName}}</div>
-        </ion-item>
-      </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let emp of employees" (click)="showDetails(emp)">
+      <div>{{emp.firstName}} {{emp.lastName}}</div>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
