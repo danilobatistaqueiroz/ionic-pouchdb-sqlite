@@ -51,19 +51,19 @@ export class EmployeeService {
   }
 
   async createPouchDB() {
-    this.rdb = new PouchDB('https://localhost:6984/employees',
+    this.rdb = new PouchDB('https://192.168.1.27:6984/employees',
     {
       auth: {
         username: "admin",
         password: "123456",
       },
     });
-    let options = {adapter:'cordova-sqlite',location:'default',androidDatabaseImplementation:2};
+    let options = {adapter:'cordova-sqlite',location:'default',androidDatabaseImplementation:2, key:'123'};
     if(isMobile(this.platform)){
       PouchDB.plugin(require('pouchdb-adapter-cordova-sqlite'));
       this.pdb = new PouchDB('employees.db', options);
     } else {
-      this.pdb = new PouchDB('employees.db');
+      this.pdb = new PouchDB('employees.db', {key:'123'});
     }
   }
 

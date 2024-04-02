@@ -59,6 +59,9 @@ dependencies:
   '@types/node':
     specifier: ^20.11.30
     version: 20.11.30
+  cordova-sqlcipher-adapter:
+    specifier: ^0.6.0
+    version: 0.6.0
   cordova-sqlite-storage:
     specifier: ^6.1.0
     version: 6.1.0
@@ -4731,6 +4734,10 @@ packages:
       serialize-javascript: 6.0.2
       webpack: 5.90.3(esbuild@0.20.1)
     dev: true
+
+  /cordova-sqlcipher-adapter@0.6.0:
+    resolution: {integrity: sha512-uKTjy4T7FhFxvg9absMQTDPRJs/RtcahAPEcrYnIzos2oLrC89nxW8IzQQ/uUWfF206W6TYU6EMPGDThNQYeqA==}
+    dev: false
 
   /cordova-sqlite-storage-dependencies@4.1.0:
     resolution: {integrity: sha512-D0ZXfNkS3z9GO+Ha2rC2odvOOMcx/moL8lpVDFxXqcsCEZbJimuki4wZfdrQrGlNd/d7r4DNodljRmO20v6Ntg==}

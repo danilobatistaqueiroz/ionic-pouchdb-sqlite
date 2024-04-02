@@ -54,7 +54,7 @@ docker-compose up -d
 http://localhost:5984/  
 http://localhost:5984/_utils/  
 **accessar o bash do couchdb server:**  
-docker exec -it YOUR_CONTAINER_NAME bash  
+docker exec -it couch_couchserver_1 bash  
 
 
 **configurando cors:**  
@@ -77,7 +77,7 @@ shell> openssl genrsa > privkey.pem
 shell> openssl req -new -x509 -key privkey.pem -out couchdb.pem -days 1095
 
 entrar no container:  
-docker exec -it YOUR_CONTAINER bash  
+docker exec -it couch_couchserver_1 bash  
 
 shell> chmod 600 privkey.pem couchdb.pem
 shell> chown couchdb privkey.pem couchdb.pem

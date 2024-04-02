@@ -31,6 +31,7 @@
     "@capacitor/status-bar": "5.0.7",
     "@ionic/angular": "^7.0.0",
     "@types/node": "^20.11.30",
+    "cordova-sqlcipher-adapter": "^0.6.0",
     "cordova-sqlite-storage": "^6.1.0",
     "ionicons": "^7.0.0",
     "pouchdb": "^8.0.1",

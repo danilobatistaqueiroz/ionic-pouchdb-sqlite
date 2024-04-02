@@ -5,7 +5,8 @@ const config: CapacitorConfig = {
   appName: 'ionic-pouchdb-sqlite',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
+    allowNavigation: ['https://192.168.1.27:6984/employees']
   }
 };
 

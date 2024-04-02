@@ -5,6 +5,7 @@ import { EmployeePage } from '../employee/employee.page';
 import { Employee } from '../employee.model';
 import { Toast } from '../toast';
 import { Network } from '@capacitor/network';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -19,9 +20,14 @@ export class HomePage implements OnInit {
 
   public employees: Employee[] = [];
 
-  constructor(public modalCtrl: ModalController, public employeeService : EmployeeService) {}
+  constructor(public modalCtrl: ModalController, public employeeService : EmployeeService, private http: HttpClient) {}
 
   async ngOnInit() {
+    this.http.get('https://192.168.1.2').subscribe({
+      next: (response) => { console.log(response); },
+      error: (error) => { console.error(error); },
+      complete: () => console.log('completed!!!!')
+    });
     this.connectionDetection();
     this.employeeService.createPouchDB();
     this.employeeService.changes();
@@ -66,7 +72,7 @@ export class HomePage implements OnInit {
       if(this.connected!="off"){
         this.employeeService.sync();
       }
-    }, 120000);
+    }, 30000);
   }
 
   async showDetails(employee:any) {
