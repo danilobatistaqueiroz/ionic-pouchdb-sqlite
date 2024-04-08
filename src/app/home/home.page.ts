@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
   constructor(public modalCtrl: ModalController, public employeeService : EmployeeService, private http: HttpClient) {}
 
   async ngOnInit() {
-    this.http.get('https://192.168.1.2').subscribe({
+    this.http.get('https://192.168.1.27:8443').subscribe({
       next: (response) => { console.log(response); },
       error: (error) => { console.error(error); },
       complete: () => console.log('completed!!!!')

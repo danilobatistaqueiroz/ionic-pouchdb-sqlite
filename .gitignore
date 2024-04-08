@@ -68,11 +68,13 @@ testem.log
 Thumbs.db
 
 # ionic
-android
 www
 node_modules
 .history
 .angular
+android
 
 dbdata
 cert
+
+!node_modules/.pnpm/@capacitor+android@5.7.4_@capacitor+core@5.7.4/node_modules/@capacitor/android/capacitor/src/main/java/com/getcapacitor/BridgeWebViewClient.java
