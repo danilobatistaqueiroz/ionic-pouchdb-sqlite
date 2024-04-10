@@ -12,5 +12,5 @@ services:
     volumes:
       - ./dbdata:/opt/couchdb/data
       - ./etc/local.ini:/opt/couchdb/etc/local.ini
-      - ./etc/couchdb/cert/couchdb.pem:/etc/couchdb/cert/couchdb.pem
+      - ./etc/couchdb/cert/couchdb.crt:/etc/couchdb/cert/couchdb.crt
       - ./etc/couchdb/cert/privkey.pem:/etc/couchdb/cert/privkey.pem

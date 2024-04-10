@@ -30,5 +30,6 @@ docker exec -it couch_couchserver_1 bash
 **configurando cors:**  
 pnpm install -g add-cors-to-couchdb
 add-cors-to-couchdb http://localhost:5984 -u admin -p 123456
+add-cors-to-couchdb http://192.168.1.27:5984 -u admin -p 123456
 
 docker-compose down  
